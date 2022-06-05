@@ -9,12 +9,14 @@ const port: string = process.env.PORT!
 
 // routes
 app.get('/', (_req, _res) => {
-    _res.send("<h1>Express with Typescript connected</h1>")
+    _res.json({
+        message: 'Connected to Typescript Express server'
+    })
 })
 
 // controllers
 
 //listen
 app.listen(port, () => {
-    console.log(`Typescript with Express 200 OK! on PORT: ${port}`)
+    console.log(`Typescript with Express 200 OK on PORT ${port}`)
 })

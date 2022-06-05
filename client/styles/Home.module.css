@@ -3,6 +3,10 @@
 }
 
 .main {
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2FBCIoXfA95d1ba%2Fgiphy.gif&f=1&nofb=1');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
