@@ -1,27 +1,35 @@
 // dependencies
-import express from 'express'
+import express, { Application, Request, Response } from 'express'
 import * as dotenv from 'dotenv'
 
 // configuration and app init
 dotenv.config()
-const app: express.Application = express()
+const app: Application = express()
 const port: string = process.env.PORT!
 
+//middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 // routes
-app.get('/', (_req, _res) => {
-    _res.json({
+app.get('/', async (req: Request, res: Response): Promise<any> => {
+    return res.status(200).send({
         message: 'Connected to Typescript Express server'
     })
 })
 
 // controllers
-const catalogController = require('./controllers/catalog_controllers')
+import catalogController from './controllers/catalog_controllers'
 app.use('/catalog', catalogController)
 
-const userController = require('./controllers/user_controllers')
+import userController from './controllers/user_controllers'
 app.use('/user', userController)
 
 //listen
-app.listen(port, () => {
-    console.log(`Typescript with Express 200 OK on PORT ${port}`)
-})
+try {
+    app.listen(port, () => {
+        console.log(`Typescript with Express 200 OK on PORT ${port}`)
+    })
+} catch (err) {
+    console.log(`Error occured ${err}`)
+}

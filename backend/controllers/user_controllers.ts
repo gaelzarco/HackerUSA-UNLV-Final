@@ -1,8 +1,8 @@
-import express from 'express'
-const user = express.Router()
+import { Router, Request, Response }  from 'express'
+const user = Router()
 
-user.get('/', (_req, _res) => {
-    _res.json({ message: 'User Controllers 200 Fully Functional' })
+user.get('/', async (req: Request, res: Response): Promise<any> => {
+    res.status(200).send({ message: 'User Controllers 200 Fully Functional' })
 })
 
-module.exports = user
+export default user

@@ -1,8 +1,8 @@
-import express from 'express'
-const catalog = express.Router()
+import { Router, Request, Response } from 'express'
+const catalog = Router()
 
-catalog.get('/', (_req, _res) => {
-    _res.json({ message: 'Catalog Controllers 200 Fully Functional' })
+catalog.get('/', async (req: Request, res: Response): Promise<any> => {
+    res.status(200).send({ message: 'Catalog Controllers 200 Fully Functional' })
 })
 
-module.exports = catalog
+export default catalog

@@ -1,26 +1,27 @@
 import { NextPage } from 'next'
 import styles from '/styles/Home.module.css'
+import { Data } from '../types'
 
-const LandingPage: NextPage = (props) => {
-    const data = props.data
+const LandingPage: NextPage<Data> = (props): JSX.Element => {
 
-    return (
-        <main className={styles.main}>
+  return (
+    <>
+      <main className={styles.main}>
         <h1 className={styles.title}>
           NEXT.ts Landing Page
         </h1>
 
-        <h3>{ data.message }</h3>
-        
+        <h3>{props.message}</h3>
+          
         <div id='loginlanding'>
           <form method='POST'>
             <div>
               <label className='userlabel'> Username </label>
-              <input type='text' className='userlogin' htmlFor='username'></input>
+              {/* <input type='text' className='userlogin' htmlFor='username'></input> */}
             </div>
             <div>
               <label className='userlabel'> Password </label>
-              <input type='text' className='userlogin' htmlFor='userpasword'></input>
+              {/* <input type='text' className='userlogin' htmlFor='userpasword'></input> */}
             </div>
             <div>
               <button id= 'login' type='submit'>Login</button>
@@ -36,8 +37,9 @@ const LandingPage: NextPage = (props) => {
 
         </div>
 
-        </main>
-    )
+      </main>
+    </>
+  )
 }
 
 export default LandingPage

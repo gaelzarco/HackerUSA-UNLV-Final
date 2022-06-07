@@ -1,12 +1,14 @@
 import type { NextPage, GetStaticProps } from 'next'
-import Link from 'next/link'
+import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import Link from 'next/link'
+
 import styles from '../styles/Home.module.css'
 
+import { Data } from './types'
 import LandingPage from './components/landingpage'
 
-const Home: NextPage = ({ data }) => {
+const Home: NextPage = ( { data }: InferGetStaticPropsType<typeof getStaticProps> ) => {
   return (
     <div>
       <Head>
@@ -14,7 +16,7 @@ const Home: NextPage = ({ data }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <LandingPage data={data}/>
+      <LandingPage {...data}/>
 
       <footer className={styles.footer}>
           <a href="">Created by Gael Zarco</a>
@@ -24,13 +26,19 @@ const Home: NextPage = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res: promise = await fetch('http://localhost:5000/')
-  const data: object = await res.json()
+  try {
+    const res: Response = await fetch('http://localhost:5000/')
+    const data: Data = await res.json()
 
-  return {
-    props: {
-      data,
-    },
+    return {
+      props: {
+        data
+      },
+    }
+  } catch (err) {
+    return {
+      notFound: true,
+    }
   }
 }
 
