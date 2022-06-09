@@ -5,14 +5,17 @@ import * as dotenv from 'dotenv'
 // configuration and app init
 dotenv.config()
 const app: Application = express()
-const port: string = process.env.PORT!
+const port = process.env.PORT as string
 
-//middleware
+// middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// db connection
+
+
 // routes
-app.get('/', async (req: Request, res: Response): Promise<any> => {
+app.get('/', async (req: Request, res: Response): Promise<Response> => {
     return res.status(200).send({
         message: 'Connected to Typescript Express server'
     })
