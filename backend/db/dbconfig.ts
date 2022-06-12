@@ -6,9 +6,9 @@ const dbHost = process.env.DB_HOST as string
 const dbDriver = process.env.DB_DRIVER as Dialect
 const dbPassword = process.env.DB_PASSWORD as string
 
-const sequelizeConnection = new Sequelize(dbName, dbUser, dbPassword, {
-    host: dbHost,
-    dialect: dbDriver
+const sequelizeConnection = new Sequelize('e-commercefinal', 'postgres', 'xarco23!', {
+    host: 'localhost',
+    dialect: 'postgres',
 })
 
 export default sequelizeConnection

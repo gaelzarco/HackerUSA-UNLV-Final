@@ -1,12 +1,11 @@
 import type { NextPage, GetStaticProps } from 'next'
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 
 import styles from '../styles/Home.module.css'
 
 import { Data } from './types'
-import LandingPage from './components/landingpage'
+import LandingPage from './landingpage'
 
 const Home: NextPage = ( { data }: InferGetStaticPropsType<typeof getStaticProps> ) => {
   return (

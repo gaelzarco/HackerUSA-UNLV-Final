@@ -1,3 +1,3 @@
-export interface Data {
+export type Data = {
     message: string
   }

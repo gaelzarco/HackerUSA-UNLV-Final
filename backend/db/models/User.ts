@@ -1,29 +1,46 @@
-import { DataTypes, Model } from 'sequelize'
-import sequelizeConnection from '../dbconfig'
+import { DataTypes, Model, Optional, Sequelize } from 'sequelize'
+// import sequelizeConnection from '../dbconfig'
+const sequelizeConnection = new Sequelize('e-commercefinal', 'postgres', 'xarco23!', {
+    host: 'localhost',
+    dialect: 'postgres',
+})
 
 interface UserAttributes {
-    firstname: string
-    lastname: string
+    userId: number
+    firstName: string
+    lastName: string
     email: string
     password: string
 }
 
-export interface UserInput extends Required<UserAttributes> {}
+export interface UserInput extends Optional<UserAttributes, 'userId'> {}
 export interface UserOutput extends Required<UserAttributes> {}
 
 class User extends Model<UserAttributes, UserInput> implements UserAttributes {
-    public firstname!: string
-    public lastname!: string
+    public userId!: number
+    public firstName!: string
+    public lastName!: string
     public email!: string
     public password!: string
+    public cart!: object
+
+    // static associate(Product){
+    //     User.hasMany(Product, { foreignKey:'productId', as: 'cart' })
+    // }
 }
 
 User.init({
-    firstname: {
+    userId: {
+        type: DataTypes.NUMBER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
+    firstName: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    lastname: {
+    lastName: {
         type: DataTypes.STRING,
         allowNull: false
     },
