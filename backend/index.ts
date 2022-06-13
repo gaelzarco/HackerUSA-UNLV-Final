@@ -2,6 +2,7 @@
 import express, { Application, Request, Response } from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import bodyparser from 'body-parser'
 
 // configuration and app init
 dotenv.config()
@@ -9,9 +10,9 @@ const app: Application = express()
 const port = process.env.PORT as string
 
 // middleware
-app.use(cors)
-app.use(express.json())
-app.use(express.static('public'))
+app.use(cors())
+app.use(bodyparser.json())
+// app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 
 // routes

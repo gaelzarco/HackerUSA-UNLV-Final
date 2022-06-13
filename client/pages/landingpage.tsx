@@ -39,7 +39,7 @@ const LandingPage: NextPage<Data> = (props): JSX.Element => {
           <a>Skip Login</a>
         </Link>
         <Link href="/createuser">
-          <a>Skip Login</a>
+          <a>Create Account</a>
         </Link>
 
       </main>
