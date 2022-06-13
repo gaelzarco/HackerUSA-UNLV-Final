@@ -2,7 +2,6 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import styles from '/styles/Home.module.css'
 
-import Catalog from './catalog'
 import { Data } from './types'
 
 const LandingPage: NextPage<Data> = (props): JSX.Element => {
@@ -37,6 +36,9 @@ const LandingPage: NextPage<Data> = (props): JSX.Element => {
         </div>
 
         <Link href="/catalog">
+          <a>Skip Login</a>
+        </Link>
+        <Link href="/createuser">
           <a>Skip Login</a>
         </Link>
 
