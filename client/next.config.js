@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/user',
+        destination: 'http://localhost:5000/user' // Proxy to Backend
+      }
+    ]
+  }
 }
-
-module.exports = nextConfig

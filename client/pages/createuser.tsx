@@ -7,7 +7,7 @@ const CreateUser: NextPage = () => {
         <main className={styles.main}>
             <h1>Create User</h1>
             <div className='form'>
-            <form action='/user' method='POST'>
+            <form action='/api/user' method='POST'>
                 <label htmlFor='firstName'>First Name</label>
                 <input
                     type='text'
